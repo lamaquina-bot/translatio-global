@@ -1,0 +1,66 @@
+# WordPress
+wp-config.php
+.htaccess
+*.log
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build
+dist/
+build/
+*.min.js
+*.min.css
+*.map
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temp
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Sensitive
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Debug
+debug.log
+error_log
+php_error.log
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Media (large files)
+*.mp4
+*.mov
+*.avi
+*.mp3
+*.wav

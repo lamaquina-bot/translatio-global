@@ -1,0 +1,74 @@
+// ============================================
+// BUTTONS
+// ============================================
+
+.btn {
+    @include btn-base;
+}
+
+.btn-primary {
+    @include btn-primary;
+}
+
+.btn-secondary {
+    @include btn-secondary;
+}
+
+.btn-outline {
+    @include btn-outline;
+}
+
+.btn-lg {
+    padding: map-get($spacing, '4') map-get($spacing, '8');
+    font-size: map-get($font-sizes, 'lg');
+}
+
+.btn-sm {
+    padding: map-get($spacing, '2') map-get($spacing, '4');
+    font-size: map-get($font-sizes, 'sm');
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: map-get($spacing, '2');
+    
+    svg {
+        width: 1.25em;
+        height: 1.25em;
+    }
+}
+
+// Botón WhatsApp flotante
+.btn-whatsapp {
+    position: fixed;
+    bottom: map-get($spacing, '6');
+    right: map-get($spacing, '6');
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    @include flex-center;
+    box-shadow: map-get($shadows, 'lg');
+    z-index: map-get($z-index, 'fixed');
+    transition: transform map-get($transitions, 'normal');
+    
+    svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    &:hover {
+        transform: scale(1.1);
+        color: white;
+    }
+    
+    @include respond-to('lg') {
+        display: none;
+    }
+}

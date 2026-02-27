@@ -1,0 +1,103 @@
+// ============================================
+// HERO
+// ============================================
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    @include flex-center;
+    text-align: center;
+    padding: map-get($spacing, '12') 0;
+    background-size: cover;
+    background-position: center;
+    background-color: $primary;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba($primary, 0.9) 0%, rgba(darken($primary, 20%), 0.8) 100%);
+    }
+    
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-title {
+        font-size: map-get($font-sizes, '3xl');
+        color: white;
+        margin-bottom: map-get($spacing, '4');
+        
+        @include respond-to('md') {
+            font-size: map-get($font-sizes, '4xl');
+        }
+        
+        @include respond-to('lg') {
+            font-size: map-get($font-sizes, '5xl');
+        }
+    }
+    
+    .hero-subtitle {
+        font-size: map-get($font-sizes, 'lg');
+        color: rgba(white, 0.9);
+        max-width: 700px;
+        margin: 0 auto map-get($spacing, '8');
+        
+        @include respond-to('lg') {
+            font-size: map-get($font-sizes, 'xl');
+        }
+    }
+    
+    .hero-cta {
+        margin-bottom: map-get($spacing, '8');
+    }
+    
+    .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: map-get($spacing, '2');
+        color: rgba(white, 0.7);
+        font-size: map-get($font-sizes, 'sm');
+        
+        span {
+            display: flex;
+            align-items: center;
+            gap: map-get($spacing, '2');
+        }
+    }
+}
+
+// Hero interno (para páginas internas)
+.hero-internal {
+    padding: map-get($spacing, '16') 0 map-get($spacing, '12');
+    background-color: $primary;
+    color: white;
+    text-align: center;
+    
+    .hero-title {
+        color: white;
+        margin-bottom: map-get($spacing, '4');
+    }
+    
+    .breadcrumb {
+        color: rgba(white, 0.7);
+        
+        a {
+            color: rgba(white, 0.7);
+            
+            &:hover {
+                color: white;
+            }
+        }
+        
+        .separator {
+            margin: 0 map-get($spacing, '2');
+        }
+        
+        .current {
+            color: white;
+        }
+    }
+}

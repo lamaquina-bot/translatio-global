@@ -1,0 +1,102 @@
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-primary;
+    font-weight: map-get($font-weights, 'bold');
+    line-height: map-get($line-heights, 'tight');
+    color: $primary;
+    margin-bottom: map-get($spacing, '4');
+    
+    :lang(zh) & {
+        font-family: $font-chinese;
+    }
+}
+
+h1 {
+    font-size: map-get($font-sizes, '4xl');
+    
+    @include respond-to('lg') {
+        font-size: map-get($font-sizes, '5xl');
+    }
+}
+
+h2 {
+    font-size: map-get($font-sizes, '3xl');
+    
+    @include respond-to('lg') {
+        font-size: map-get($font-sizes, '4xl');
+    }
+}
+
+h3 {
+    font-size: map-get($font-sizes, '2xl');
+    
+    @include respond-to('lg') {
+        font-size: map-get($font-sizes, '3xl');
+    }
+}
+
+h4 {
+    font-size: map-get($font-sizes, 'xl');
+    
+    @include respond-to('lg') {
+        font-size: map-get($font-sizes, '2xl');
+    }
+}
+
+h5 {
+    font-size: map-get($font-sizes, 'lg');
+}
+
+h6 {
+    font-size: map-get($font-sizes, 'md');
+}
+
+p {
+    margin-bottom: map-get($spacing, '4');
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.lead {
+    font-size: map-get($font-sizes, 'lg');
+    line-height: map-get($line-heights, 'relaxed');
+    
+    @include respond-to('lg') {
+        font-size: map-get($font-sizes, 'xl');
+    }
+}
+
+small,
+.text-small {
+    font-size: map-get($font-sizes, 'sm');
+}
+
+.text-large {
+    font-size: map-get($font-sizes, 'lg');
+}
+
+// Text utilities
+.text-primary { color: $primary; }
+.text-secondary { color: $secondary; }
+.text-accent { color: $accent; }
+.text-muted { color: map-get($colors, 'gray-600'); }
+.text-white { color: white; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-light { font-weight: map-get($font-weights, 'light'); }
+.font-normal { font-weight: map-get($font-weights, 'normal'); }
+.font-medium { font-weight: map-get($font-weights, 'medium'); }
+.font-bold { font-weight: map-get($font-weights, 'bold'); }

@@ -1,0 +1,148 @@
+// ============================================
+// CARDS
+// ============================================
+
+.card {
+    @include card-base;
+}
+
+.card-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: map-get($spacing, '6');
+}
+
+.card-title {
+    font-size: map-get($font-sizes, 'xl');
+    margin-bottom: map-get($spacing, '3');
+    
+    a {
+        color: inherit;
+        
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.card-text {
+    color: map-get($colors, 'gray-600');
+    margin-bottom: map-get($spacing, '4');
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: map-get($spacing, '2');
+    color: $primary;
+    font-weight: map-get($font-weights, 'medium');
+    
+    svg {
+        width: 1em;
+        height: 1em;
+        transition: transform map-get($transitions, 'fast');
+    }
+    
+    &:hover {
+        svg {
+            transform: translateX(4px);
+        }
+    }
+}
+
+// Servicio Card
+.servicio-card {
+    text-align: center;
+    padding: map-get($spacing, '8');
+    
+    .servicio-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto map-get($spacing, '6');
+        @include flex-center;
+        background-color: rgba($primary, 0.1);
+        border-radius: 50%;
+        
+        svg {
+            width: 40px;
+            height: 40px;
+            color: $primary;
+        }
+    }
+    
+    .servicio-title {
+        font-size: map-get($font-sizes, 'xl');
+        margin-bottom: map-get($spacing, '3');
+    }
+    
+    .servicio-desc {
+        color: map-get($colors, 'gray-600');
+        margin-bottom: map-get($spacing, '4');
+    }
+}
+
+// Testimonio Card
+.testimonio-card {
+    background-color: $light-bg;
+    padding: map-get($spacing, '6');
+    border-radius: map-get($border-radius, 'lg');
+    
+    .testimonio-content {
+        font-style: italic;
+        margin-bottom: map-get($spacing, '4');
+        
+        &::before {
+            content: '"';
+            font-size: map-get($font-sizes, '3xl');
+            color: $secondary;
+            line-height: 0;
+            display: block;
+            margin-bottom: map-get($spacing, '2');
+        }
+    }
+    
+    .testimonio-author {
+        display: flex;
+        align-items: center;
+        gap: map-get($spacing, '3');
+        
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: map-get($font-weights, 'semibold');
+        }
+        
+        .author-location {
+            font-size: map-get($font-sizes, 'sm');
+            color: map-get($colors, 'gray-600');
+        }
+    }
+    
+    .testimonio-rating {
+        color: $secondary;
+        margin-top: map-get($spacing, '2');
+    }
+}
+
+// Caso Card
+.caso-card {
+    .caso-badge {
+        display: inline-block;
+        padding: map-get($spacing, '1') map-get($spacing, '3');
+        background-color: rgba($accent, 0.1);
+        color: $accent;
+        font-size: map-get($font-sizes, 'sm');
+        font-weight: map-get($font-weights, 'medium');
+        border-radius: map-get($border-radius, 'full');
+        margin-bottom: map-get($spacing, '3');
+    }
+}

@@ -1,0 +1,102 @@
+// ============================================
+// RESET
+// ============================================
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: $font-primary;
+    font-size: map-get($font-sizes, 'base');
+    line-height: map-get($line-heights, 'normal');
+    color: $text-color;
+    background-color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    :lang(zh) & {
+        font-family: $font-chinese;
+    }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    transition: color map-get($transitions, 'fast');
+    
+    &:hover {
+        color: darken($primary, 15%);
+    }
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+// Screen reader only
+.sr-only {
+    @include visually-hidden;
+}
+
+// Skip link
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    padding: map-get($spacing, '3') map-get($spacing, '4');
+    background: $primary;
+    color: white;
+    z-index: map-get($z-index, 'modal');
+    
+    &:focus {
+        top: 0;
+    }
+}

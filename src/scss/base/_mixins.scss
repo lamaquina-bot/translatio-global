@@ -1,0 +1,208 @@
+// ============================================
+// MIXINS
+// ============================================
+
+// ----- MEDIA QUERIES -----
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-below($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (max-width: map-get($breakpoints, $breakpoint) - 1) {
+            @content;
+        }
+    }
+}
+
+// ----- FLEXBOX -----
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// ----- TIPOGRAFÍA -----
+
+@mixin heading($size: '2xl') {
+    font-family: $font-primary;
+    font-size: map-get($font-sizes, $size);
+    font-weight: map-get($font-weights, 'bold');
+    line-height: map-get($line-heights, 'tight');
+    color: $primary;
+    
+    :lang(zh) & {
+        font-family: $font-chinese;
+    }
+}
+
+@mixin body-text {
+    font-family: $font-primary;
+    font-size: map-get($font-sizes, 'base');
+    font-weight: map-get($font-weights, 'normal');
+    line-height: map-get($line-heights, 'normal');
+    
+    :lang(zh) & {
+        font-family: $font-chinese;
+    }
+}
+
+// ----- BOTONES -----
+
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: map-get($spacing, '3') map-get($spacing, '6');
+    font-size: map-get($font-sizes, 'base');
+    font-weight: map-get($font-weights, 'medium');
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: map-get($border-radius, 'md');
+    cursor: pointer;
+    transition: all map-get($transitions, 'normal');
+    
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+@mixin btn-primary {
+    @include btn-base;
+    background-color: $primary;
+    color: white;
+    border-color: $primary;
+    
+    &:hover {
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+    }
+}
+
+@mixin btn-secondary {
+    @include btn-base;
+    background-color: $secondary;
+    color: $primary;
+    border-color: $secondary;
+    
+    &:hover {
+        background-color: darken($secondary, 10%);
+        border-color: darken($secondary, 10%);
+    }
+}
+
+@mixin btn-outline {
+    @include btn-base;
+    background-color: transparent;
+    color: $primary;
+    border-color: $primary;
+    
+    &:hover {
+        background-color: $primary;
+        color: white;
+    }
+}
+
+// ----- TARJETAS -----
+
+@mixin card-base {
+    background: white;
+    border-radius: map-get($border-radius, 'lg');
+    box-shadow: map-get($shadows, 'md');
+    overflow: hidden;
+    transition: all map-get($transitions, 'normal');
+    
+    &:hover {
+        box-shadow: map-get($shadows, 'lg');
+        transform: translateY(-4px);
+    }
+}
+
+// ----- CONTENEDOR -----
+
+@mixin container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: map-get($spacing, '4');
+    padding-right: map-get($spacing, '4');
+    
+    @include respond-to('md') {
+        padding-left: map-get($spacing, '6');
+        padding-right: map-get($spacing, '6');
+    }
+}
+
+@mixin section-padding {
+    padding-top: map-get($spacing, '12');
+    padding-bottom: map-get($spacing, '12');
+    
+    @include respond-to('lg') {
+        padding-top: map-get($spacing, '20');
+        padding-bottom: map-get($spacing, '20');
+    }
+}
+
+// ----- UTILIDADES -----
+
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@mixin truncate($lines: 1) {
+    @if $lines == 1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+// ----- ANIMACIONES -----
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}

@@ -1,0 +1,161 @@
+// ============================================
+// NAVIGATION
+// ============================================
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: map-get($z-index, 'sticky');
+    background-color: white;
+    box-shadow: map-get($shadows, 'sm');
+    transition: all map-get($transitions, 'normal');
+    
+    &.scrolled {
+        box-shadow: map-get($shadows, 'md');
+    }
+    
+    .container {
+        @include flex-between;
+        padding-top: map-get($spacing, '4');
+        padding-bottom: map-get($spacing, '4');
+    }
+    
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: map-get($spacing, '3');
+        
+        img,
+        svg {
+            height: 40px;
+            width: auto;
+        }
+    }
+}
+
+.nav-menu {
+    display: none;
+    gap: map-get($spacing, '8');
+    
+    @include respond-to('lg') {
+        display: flex;
+    }
+    
+    a {
+        color: $text-color;
+        font-weight: map-get($font-weights, 'medium');
+        padding: map-get($spacing, '2') 0;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $primary;
+            transition: width map-get($transitions, 'fast');
+        }
+        
+        &:hover,
+        &.active {
+            color: $primary;
+            
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Language switcher
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: map-get($spacing, '2');
+    
+    select {
+        border: 1px solid map-get($colors, 'gray-300');
+        border-radius: map-get($border-radius, 'sm');
+        padding: map-get($spacing, '2');
+        font-size: map-get($font-sizes, 'sm');
+        cursor: pointer;
+    }
+    
+    @include respond-below('lg') {
+        display: none;
+    }
+}
+
+// Mobile menu toggle
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: map-get($spacing, '2');
+    cursor: pointer;
+    
+    @include respond-to('lg') {
+        display: none;
+    }
+    
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: $primary;
+        transition: all map-get($transitions, 'fast');
+    }
+    
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    }
+}
+
+// Mobile menu
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    padding: map-get($spacing, '6');
+    transform: translateX(100%);
+    transition: transform map-get($transitions, 'normal');
+    z-index: map-get($z-index, 'dropdown');
+    
+    &.active {
+        transform: translateX(0);
+    }
+    
+    a {
+        display: block;
+        padding: map-get($spacing, '4');
+        font-size: map-get($font-sizes, 'lg');
+        color: $text-color;
+        border-bottom: 1px solid map-get($colors, 'gray-200');
+        
+        &:hover {
+            color: $primary;
+            background-color: $light-bg;
+        }
+    }
+    
+    .language-switcher-mobile {
+        margin-top: map-get($spacing, '6');
+    }
+}

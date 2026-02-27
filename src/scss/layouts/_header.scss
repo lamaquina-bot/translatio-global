@@ -1,0 +1,121 @@
+// ============================================
+// HEADER & FOOTER
+// ============================================
+
+// Header
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: map-get($z-index, 'sticky');
+}
+
+// Footer
+.site-footer {
+    background-color: map-get($colors, 'gray-900');
+    color: rgba(white, 0.8);
+    padding: map-get($spacing, '16') 0 map-get($spacing, '8');
+    
+    a {
+        color: rgba(white, 0.8);
+        
+        &:hover {
+            color: white;
+        }
+    }
+    
+    .footer-main {
+        display: grid;
+        gap: map-get($spacing, '8');
+        
+        @include respond-to('md') {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @include respond-to('lg') {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+        }
+    }
+    
+    .footer-brand {
+        .footer-logo {
+            margin-bottom: map-get($spacing, '4');
+            
+            img,
+            svg {
+                height: 50px;
+                width: auto;
+            }
+        }
+        
+        .footer-desc {
+            color: rgba(white, 0.6);
+            font-size: map-get($font-sizes, 'sm');
+        }
+    }
+    
+    .footer-title {
+        color: white;
+        font-size: map-get($font-sizes, 'md');
+        font-weight: map-get($font-weights, 'semibold');
+        margin-bottom: map-get($spacing, '4');
+    }
+    
+    .footer-links {
+        li {
+            margin-bottom: map-get($spacing, '2');
+        }
+        
+        a {
+            font-size: map-get($font-sizes, 'sm');
+        }
+    }
+    
+    .footer-contact {
+        p {
+            display: flex;
+            align-items: center;
+            gap: map-get($spacing, '2');
+            margin-bottom: map-get($spacing, '2');
+            font-size: map-get($font-sizes, 'sm');
+        }
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: map-get($spacing, '3');
+        margin-top: map-get($spacing, '4');
+        
+        a {
+            @include flex-center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(white, 0.1);
+            border-radius: 50%;
+            transition: background-color map-get($transitions, 'fast');
+            
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            &:hover {
+                background-color: $primary;
+            }
+        }
+    }
+    
+    .footer-bottom {
+        margin-top: map-get($spacing, '8');
+        padding-top: map-get($spacing, '6');
+        border-top: 1px solid rgba(white, 0.1);
+        @include flex-between;
+        flex-wrap: wrap;
+        gap: map-get($spacing, '4');
+        
+        p {
+            font-size: map-get($font-sizes, 'sm');
+            color: rgba(white, 0.6);
+            margin: 0;
+        }
+    }
+}
