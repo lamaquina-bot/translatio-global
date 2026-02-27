@@ -1,0 +1,289 @@
+# Translation template for Translatio Global Theme
+# Copyright (C) 2025 Translatio Global
+# This file is distributed under the GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Translatio Global 1.0.0\n"
+"POT-Creation-Date: 2025-02-27 22:00+0000\n"
+"PO-Revision-Date: 2025-02-27 22:00+0000\n"
+"Last-Translator: FULL NAME <email@example.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translatio Global Theme\n"
+"X-Domain: translatio\n"
+
+#: header.php:15
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:28
+msgid "Menu"
+msgstr ""
+
+#: header.php:32
+msgid "Close menu"
+msgstr ""
+
+#: templates/front-page.php:15
+msgid "Professional Translation Services"
+msgstr ""
+
+#: templates/front-page.php:18
+msgid "Expert translations in over 50 languages for businesses and individuals"
+msgstr ""
+
+#: templates/front-page.php:22
+msgid "Get a Quote"
+msgstr ""
+
+#: templates/front-page.php:23
+msgid "Contact Us"
+msgstr ""
+
+#: templates/front-page.php:35
+msgid "Our Services"
+msgstr ""
+
+#: templates/front-page.php:42
+msgid "Certified Translation"
+msgstr ""
+
+#: templates/front-page.php:45
+msgid "Official translations valid for government and legal purposes"
+msgstr ""
+
+#: templates/front-page.php:50
+msgid "Legal Translation"
+msgstr ""
+
+#: templates/front-page.php:53
+msgid "Specialized translations for contracts, agreements, and legal documents"
+msgstr ""
+
+#: templates/front-page.php:58
+msgid "Technical Translation"
+msgstr ""
+
+#: templates/front-page.php:61
+msgid "Accurate translations of technical manuals, specifications, and documentation"
+msgstr ""
+
+#: templates/front-page.php:66
+msgid "Interpretation"
+msgstr ""
+
+#: templates/front-page.php:69
+msgid "Professional interpretation services for conferences and meetings"
+msgstr ""
+
+#: templates/front-page.php:78
+msgid "Why Choose Us?"
+msgstr ""
+
+#: templates/front-page.php:82
+msgid "Years of Experience"
+msgstr ""
+
+#: templates/front-page.php:83
+msgid "Over 15 years providing quality translation services"
+msgstr ""
+
+#: templates/front-page.php:86
+msgid "Expert Translators"
+msgstr ""
+
+#: templates/front-page.php:87
+msgid "Certified native translators in every language"
+msgstr ""
+
+#: templates/front-page.php:90
+msgid "Quick Delivery"
+msgstr ""
+
+#: templates/front-page.php:91
+msgid "Fast turnaround without compromising quality"
+msgstr ""
+
+#: templates/front-page.php:94
+msgid "Confidentiality"
+msgstr ""
+
+#: templates/front-page.php:95
+msgid "Strict confidentiality agreements for all documents"
+msgstr ""
+
+#: templates/front-page.php:104
+msgid "What Our Clients Say"
+msgstr ""
+
+#: templates/front-page.php:120
+msgid "Ready to Get Started?"
+msgstr ""
+
+#: templates/front-page.php:123
+msgid "Contact us today for a free quote on your translation project"
+msgstr ""
+
+#: templates/front-page.php:126
+msgid "Request a Quote"
+msgstr ""
+
+#: footer.php:15
+msgid "About Us"
+msgstr ""
+
+#: footer.php:18
+msgid "Translatio Global is your trusted partner for professional translation services."
+msgstr ""
+
+#: footer.php:28
+msgid "Quick Links"
+msgstr ""
+
+#: footer.php:31
+msgid "Home"
+msgstr ""
+
+#: footer.php:32
+msgid "Services"
+msgstr ""
+
+#: footer.php:33
+msgid "About"
+msgstr ""
+
+#: footer.php:34
+msgid "Contact"
+msgstr ""
+
+#: footer.php:42
+msgid "Contact Info"
+msgstr ""
+
+#: footer.php:46
+msgid "Address: "
+msgstr ""
+
+#: footer.php:50
+msgid "Phone: "
+msgstr ""
+
+#: footer.php:54
+msgid "Email: "
+msgstr ""
+
+#: footer.php:62
+msgid "Follow Us"
+msgstr ""
+
+#: footer.php:75
+msgid "&copy; %s Translatio Global. All rights reserved."
+msgstr ""
+
+#: inc/cpt-servicios.php:12
+msgid "Services"
+msgstr ""
+
+#: inc/cpt-servicios.php:13
+msgid "Service"
+msgstr ""
+
+#: inc/cpt-servicios.php:14
+msgid "Add New Service"
+msgstr ""
+
+#: inc/cpt-servicios.php:15
+msgid "Add New"
+msgstr ""
+
+#: inc/cpt-servicios.php:16
+msgid "Edit Service"
+msgstr ""
+
+#: inc/cpt-servicios.php:17
+msgid "New Service"
+msgstr ""
+
+#: inc/cpt-servicios.php:18
+msgid "View Service"
+msgstr ""
+
+#: inc/cpt-servicios.php:19
+msgid "Search Services"
+msgstr ""
+
+#: inc/cpt-servicios.php:20
+msgid "No services found"
+msgstr ""
+
+#: inc/cpt-servicios.php:21
+msgid "No services found in Trash"
+msgstr ""
+
+#: inc/cpt-testimonios.php:12
+msgid "Testimonials"
+msgstr ""
+
+#: inc/cpt-testimonios.php:13
+msgid "Testimonial"
+msgstr ""
+
+#: inc/cpt-testimonios.php:14
+msgid "Add New Testimonial"
+msgstr ""
+
+#: inc/cpt-casos.php:12
+msgid "Case Studies"
+msgstr ""
+
+#: inc/cpt-casos.php:13
+msgid "Case Study"
+msgstr ""
+
+#: inc/cpt-casos.php:14
+msgid "Add New Case Study"
+msgstr ""
+
+#: inc/metaboxes.php:25
+msgid "Service Details"
+msgstr ""
+
+#: inc/metaboxes.php:35
+msgid "Price Range"
+msgstr ""
+
+#: inc/metaboxes.php:42
+msgid "Delivery Time"
+msgstr ""
+
+#: inc/metaboxes.php:49
+msgid "Languages Available"
+msgstr ""
+
+#: inc/helpers.php:25
+msgid "Read More"
+msgstr ""
+
+#: inc/helpers.php:45
+msgid "Previous"
+msgstr ""
+
+#: inc/helpers.php:46
+msgid "Next"
+msgstr ""
+
+#: 404.php:10
+msgid "Page Not Found"
+msgstr ""
+
+#: 404.php:12
+msgid "The page you are looking for does not exist."
+msgstr ""
+
+#: 404.php:15
+msgid "Go to Homepage"
+msgstr ""

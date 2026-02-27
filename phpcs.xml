@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+    PHP_CodeSniffer Configuration
+    Estándares de código WordPress para Translatio Global
+    
+    Uso:
+    vendor/bin/phpcs --standard=phpcs.xml wp-content/themes/translatio/
+    vendor/bin/phpcbf --standard=phpcs.xml wp-content/themes/translatio/
+-->
+<ruleset name="Translatio Global">
+    <description>Estándares de código WordPress para Translatio Global Theme</description>
+    
+    <!-- Usar estándares de WordPress -->
+    <rule ref="WordPress">
+        <!-- Excluir reglas conflictivas o innecesarias -->
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+    </rule>
+    
+    <!-- Incluir estándar de documentación -->
+    <rule ref="WordPress-Docs"/>
+    
+    <!-- Incluir estándar extra -->
+    <rule ref="WordPress-Extra"/>
+    
+    <!-- Configuración específica -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="translatio"/>
+                <element value="tg"/>
+            </property>
+        </properties>
+    </rule>
+    
+    <!-- Validación de texto de dominio -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="translatio"/>
+            </property>
+        </properties>
+    </rule>
+    
+    <!-- Longitud de línea -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="150"/>
+        </properties>
+    </rule>
+    
+    <!-- Archivos a incluir -->
+    <file>wp-content/themes/translatio</file>
+    
+    <!-- Archivos a excluir -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/.git/*</exclude-pattern>
+    <exclude-pattern>*/assets/*</exclude-pattern>
+    <exclude-pattern>*/languages/*</exclude-pattern>
+    
+    <!-- Mostrar progreso -->
+    <arg value="p"/>
+    
+    <!-- Mostrar códigos de error -->
+    <arg value="s"/>
+    
+    <!-- Colores -->
+    <arg name="colors"/>
+    
+    <!-- Codificación -->
+    <arg name="encoding" value="utf-8"/>
+    
+    <!-- Versión de PHP objetivo -->
+    <config name="testVersion" value="7.4-8.2"/>
+    
+    <!-- Versión de WordPress soportada -->
+    <config name="minimum_supported_wp_version" value="5.9"/>
+    
+    <!-- Reporte -->
+    <arg name="report" value="full"/>
+    <arg name="report" value="summary"/>
+    
+    <!-- Limite de memoria -->
+    <ini name="memory_limit" value="512M"/>
+</ruleset>

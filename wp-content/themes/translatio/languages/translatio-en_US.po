@@ -1,0 +1,107 @@
+# English translation for Translatio Global Theme
+# Copyright (C) 2025 Translatio Global
+# This file is distributed under the GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Translatio Global 1.0.0\n"
+"POT-Creation-Date: 2025-02-27 22:00+0000\n"
+"PO-Revision-Date: 2025-02-27 22:00+0000\n"
+"Last-Translator: Translatio Global <info@translatioglobal.com>\n"
+"Language-Team: English <info@translatioglobal.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translatio Global Theme\n"
+"X-Domain: translatio\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: header.php:15
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: header.php:28
+msgid "Menu"
+msgstr "Menu"
+
+#: header.php:32
+msgid "Close menu"
+msgstr "Close menu"
+
+#: templates/front-page.php:15
+msgid "Professional Translation Services"
+msgstr "Professional Translation Services"
+
+#: templates/front-page.php:22
+msgid "Get a Quote"
+msgstr "Get a Quote"
+
+#: templates/front-page.php:23
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: templates/front-page.php:35
+msgid "Our Services"
+msgstr "Our Services"
+
+#: templates/front-page.php:42
+msgid "Certified Translation"
+msgstr "Certified Translation"
+
+#: templates/front-page.php:50
+msgid "Legal Translation"
+msgstr "Legal Translation"
+
+#: templates/front-page.php:58
+msgid "Technical Translation"
+msgstr "Technical Translation"
+
+#: templates/front-page.php:66
+msgid "Interpretation"
+msgstr "Interpretation"
+
+#: templates/front-page.php:78
+msgid "Why Choose Us?"
+msgstr "Why Choose Us?"
+
+#: templates/front-page.php:120
+msgid "Ready to Get Started?"
+msgstr "Ready to Get Started?"
+
+#: templates/front-page.php:126
+msgid "Request a Quote"
+msgstr "Request a Quote"
+
+#: footer.php:15
+msgid "About Us"
+msgstr "About Us"
+
+#: footer.php:28
+msgid "Quick Links"
+msgstr "Quick Links"
+
+#: footer.php:31
+msgid "Home"
+msgstr "Home"
+
+#: footer.php:32
+msgid "Services"
+msgstr "Services"
+
+#: footer.php:33
+msgid "About"
+msgstr "About"
+
+#: footer.php:34
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Read More"
+msgstr "Read More"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Next"
+msgstr "Next"

@@ -1,0 +1,107 @@
+# Chinese (Simplified) translation for Translatio Global Theme
+# Copyright (C) 2025 Translatio Global
+# This file is distributed under the GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Translatio Global 1.0.0\n"
+"POT-Creation-Date: 2025-02-27 22:00+0000\n"
+"PO-Revision-Date: 2025-02-27 22:00+0000\n"
+"Last-Translator: Translatio Global <info@translatioglobal.com>\n"
+"Language-Team: 中文 (简体) <info@translatioglobal.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translatio Global Theme\n"
+"X-Domain: translatio\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: header.php:15
+msgid "Skip to content"
+msgstr "跳转到内容"
+
+#: header.php:28
+msgid "Menu"
+msgstr "菜单"
+
+#: header.php:32
+msgid "Close menu"
+msgstr "关闭菜单"
+
+#: templates/front-page.php:15
+msgid "Professional Translation Services"
+msgstr "专业翻译服务"
+
+#: templates/front-page.php:22
+msgid "Get a Quote"
+msgstr "获取报价"
+
+#: templates/front-page.php:23
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: templates/front-page.php:35
+msgid "Our Services"
+msgstr "我们的服务"
+
+#: templates/front-page.php:42
+msgid "Certified Translation"
+msgstr "认证翻译"
+
+#: templates/front-page.php:50
+msgid "Legal Translation"
+msgstr "法律翻译"
+
+#: templates/front-page.php:58
+msgid "Technical Translation"
+msgstr "技术翻译"
+
+#: templates/front-page.php:66
+msgid "Interpretation"
+msgstr "口译服务"
+
+#: templates/front-page.php:78
+msgid "Why Choose Us?"
+msgstr "为什么选择我们？"
+
+#: templates/front-page.php:120
+msgid "Ready to Get Started?"
+msgstr "准备开始了吗？"
+
+#: templates/front-page.php:126
+msgid "Request a Quote"
+msgstr "请求报价"
+
+#: footer.php:15
+msgid "About Us"
+msgstr "关于我们"
+
+#: footer.php:28
+msgid "Quick Links"
+msgstr "快速链接"
+
+#: footer.php:31
+msgid "Home"
+msgstr "首页"
+
+#: footer.php:32
+msgid "Services"
+msgstr "服务"
+
+#: footer.php:33
+msgid "About"
+msgstr "关于"
+
+#: footer.php:34
+msgid "Contact"
+msgstr "联系"
+
+msgid "Read More"
+msgstr "阅读更多"
+
+msgid "Previous"
+msgstr "上一页"
+
+msgid "Next"
+msgstr "下一页"

@@ -1,0 +1,93 @@
+# =============================================================================
+# Robots.txt - Translatio Global
+# Configuración optimizada para SEO
+# =============================================================================
+
+# User-agent global
+User-agent: *
+
+# Permitir todo por defecto
+Allow: /
+
+# Bloquear directorios de administración
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/upgrade/
+Disallow: /wp-content/backups/
+
+# Bloquear archivos sensibles
+Disallow: /xmlrpc.php
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+Disallow: /readme.html
+Disallow: /license.txt
+Disallow: /wp-config-sample.php
+
+# Bloquear parámetros de búsqueda
+Disallow: /*?s=
+Disallow: /search/
+Disallow: /*?replytocom=
+Disallow: /*?attachment_id=
+
+# Permitir acceso a assets
+Allow: /wp-content/themes/
+Allow: /wp-content/uploads/
+Allow: /wp-content/*.css
+Allow: /wp-content/*.js
+Allow: /wp-includes/css/
+Allow: /wp-includes/js/
+Allow: /wp-includes/images/
+
+# Permitir sitemap
+Allow: /sitemap.xml
+Allow: /sitemap_index.xml
+
+# Bloquear feeds (opcional, descomenta si no quieres indexar feeds)
+# Disallow: /feed/
+# Disallow: /comments/feed/
+# Disallow: /*/feed/
+
+# =============================================================================
+# Bing
+# =============================================================================
+User-agent: Bingbot
+Crawl-delay: 1
+
+# =============================================================================
+# Google
+# =============================================================================
+User-agent: Googlebot
+Crawl-delay: 0
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /wp-content/uploads/
+
+# =============================================================================
+# Yandex
+# =============================================================================
+User-agent: Yandex
+Crawl-delay: 2
+
+# =============================================================================
+# Baidu
+# =============================================================================
+User-agent: Baiduspider
+Crawl-delay: 5
+
+# =============================================================================
+# Sitemap
+# =============================================================================
+Sitemap: https://tudominio.com/sitemap.xml
+
+# =============================================================================
+# Host preferido (descomenta y ajusta)
+# =============================================================================
+# Host: https://tudominio.com
+
+# =============================================================================
+# Contacto
+# =============================================================================
+# Para problemas con el rastreo, contactar a: webmaster@tudominio.com
