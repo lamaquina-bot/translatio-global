@@ -1,0 +1,86 @@
+---
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const nav = {
+  es: { home: '/', services: '/servicios', process: '/proceso', about: '/quienes-somos', contact: '/contacto' },
+  en: { home: '/en/', services: '/en/services', process: '/en/process', about: '/en/about', contact: '/en/contact' },
+  pt: { home: '/pt/', services: '/pt/servicos', process: '/pt/processo', about: '/pt/quem-somos', contact: '/pt/contato' },
+  zh: { home: '/zh/', services: '/zh/services', process: '/zh/process', about: '/zh/about', contact: '/zh/contact' },
+  fr: { home: '/fr/', services: '/fr/services', process: '/fr/processus', about: '/fr/a-propos', contact: '/fr/contact' },
+};
+
+const labels = {
+  es: { home: 'Inicio', services: 'Servicios', process: 'Proceso', about: 'Quiénes Somos', contact: 'Contacto' },
+  en: { home: 'Home', services: 'Services', process: 'Process', about: 'About', contact: 'Contact' },
+  pt: { home: 'Início', services: 'Serviços', process: 'Processo', about: 'Quem Somos', contact: 'Contato' },
+  zh: { home: '首页', services: '服务', process: '流程', about: '关于我们', contact: '联系我们' },
+  fr: { home: 'Accueil', services: 'Services', process: 'Processus', about: 'Qui Sommes-Nous', contact: 'Contact' },
+};
+
+const flags: Record<string, string> = { es: '🇪🇸', en: '🇬🇧', pt: '🇧🇷', zh: '🇨🇳', fr: '🇫🇷' };
+const l = lang as string;
+const n = nav[l];
+const lb = labels[l];
+---
+
+<header class="fixed top-0 w-full bg-[#FAFAF7]/95 backdrop-blur-sm z-50 border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={n.home} class="text-xl font-bold text-[#4A7C6F]" style="font-family: 'Playfair Display', serif;">
+      Translatio
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href={n.services} class="hover:text-[#4A7C6F] transition-colors">{lb.services}</a>
+      <a href={n.process} class="hover:text-[#4A7C6F] transition-colors">{lb.process}</a>
+      <a href={n.about} class="hover:text-[#4A7C6F] transition-colors">{lb.about}</a>
+      <a href={n.contact} class="bg-[#4A7C6F] text-white px-4 py-2 rounded-lg hover:bg-[#3d6b5f] transition-colors">{lb.contact}</a>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="relative group">
+      <button class="flex items-center gap-1 text-sm px-2 py-1 rounded hover:bg-gray-100" aria-label="Select language">
+        <span>{flags[l]}</span>
+        <span class="uppercase text-xs">{l}</span>
+        <span class="text-xs">▼</span>
+      </button>
+      <div class="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border py-1 hidden group-hover:block min-w-[140px]">
+        {Object.entries(languages).map(([code, name]) => (
+          <a
+            href={code === 'es' ? '/' : `/${code}/`}
+            class:list={['block px-3 py-2 text-sm hover:bg-gray-50', code === l ? 'text-[#4A7C6F] font-semibold' : 'text-gray-700']}
+          >
+            {flags[code]} {name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-2xl" id="mobile-menu-btn" aria-label="Menu">☰</button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden md:hidden border-t bg-white">
+    <div class="px-4 py-3 space-y-3">
+      <a href={n.services} class="block py-2">{lb.services}</a>
+      <a href={n.process} class="block py-2">{lb.process}</a>
+      <a href={n.about} class="block py-2">{lb.about}</a>
+      <a href={n.contact} class="block py-2 text-[#4A7C6F] font-semibold">{lb.contact}</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>

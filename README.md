@@ -2,51 +2,62 @@
 
 > Agencia de acompañamiento integral en subrogación gestacional en Colombia.
 
-## 📋 Resumen
+## Stack
 
-**Cliente:** Translatio Global
-**País base:** Colombia
-**Mercado objetivo:** Europa, Latinoamérica, China
+| Tech | Uso |
+|-----------|
+| **Astro 5** | Framework SSG (Static Site Generation) |
+| **Cloudflare Pages** | Hosting + CDN global + SSL |
+| **Cloudflare Workers** | API endpoints (chatbot, forms) |
+| **Cloudflare D1** | Base de datos SQLite (leads, logs) |
+| **Workers AI** | Chatbot inteligencia |
+| **Tailwind CSS** | Estilos |
 
-### El negocio
-Agencia de acompañamiento integral en subrogación gestacional. Acompaña a padres intencionales, gestantes y todo el proceso de principio a fin.
+**Costo: $0/mes** (todo dentro del free tier de Cloudflare)
 
-### Lo que pidió
-1. **Sitio web corporativo multilenguaje** (ES, EN, PT, ZH, FR)
-2. **Chatbot integrado 24/7** con FAQ, captura de leads y derivación a humano
+## Quick Start
 
-### Diferenciador
-Humano y empático. Acompañan tanto padres como gestantes. Colombia como destino exclusivo.
+```bash
+# Instalar dependencias
+npm install
 
----
+# Desarrollo local
+npm run dev
 
-## 📁 Estructura del Proyecto
+# Build
+npm run build
 
-```
-docs/
-  01-brief/         → Brief del proyecto
-  02-content/       → Contenido web en 5 idiomas
-  03-design/         → Diseño y UI/UX
-  04-architecture/   → Arquitectura técnica
-  05-testing/        → Strategy y checklists de testing
-  06-chatbot/        → Spec del chatbot
-  07-deployment/     → Plan de deployment
-src/                 → Código fuente
-tests/               → Tests y reportes
-wp-content/          → Theme WordPress custom
+# Preview
+npm run preview
+
+# Deploy (automático via git push a main)
+git push origin main
 ```
 
-## 🛡️ Testing — Transversal
+## Idiomas
 
-Todo entregable pasa por el Testing Squad de MOLINO antes de avanzar. Ver `docs/05-testing/TESTING_STRATEGY.md`.
+ES (Español) · EN (English) · PT (Português) · ZH (中文) · FR (Français)
 
-## Entregables
+## Estructura
 
-| # | Entregable | Estado |
-|---|-----------|--------|
-| 1 | Brief del proyecto | ✅ |
-| 2 | Contenido web (5 idiomas) | ✅ |
-| 3 | Testing strategy | ✅ |
-| 4 | Chatbot specification | ✅ |
-| 5 | Arquitectura + diseño | ⏳ |
-| 6 | Deployment plan | ⏳ |
+```
+src/
+  components/    → Componentes Astro reutilizables
+  layouts/       → Layout base
+  pages/         → Páginas por idioma
+  pages/api/     → Workers API (chatbot, forms)
+  i18n/          → Traducciones
+  content/       → FAQ, testimonios
+  styles/        → CSS global + variables
+functions/       → Cloudflare Functions
+public/          → Assets estáticos
+docs/            → Documentación del proyecto
+```
+
+## Deploy
+
+Git push a `main` → Cloudflare Pages auto-deploy.
+
+## Docs
+
+Ver `docs/` para brief, arquitectura, testing strategy y chatbot spec.

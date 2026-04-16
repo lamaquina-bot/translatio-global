@@ -1,0 +1,49 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const services: Record<string, { title: string; items: { icon: string; title: string; desc: string }[] }> = {
+  es: { title: 'Nuestro Acompañamiento', items: [
+    { icon: '👨‍👩‍👧', title: 'Para Padres Intencionales', desc: 'Te acompañamos desde la primera consulta hasta el nacimiento. Información clara, proceso transparente, apoyo emocional.' },
+    { icon: '🤰', title: 'Para Gestantes', desc: 'Protección legal, acompañamiento médico y psicológico, y respeto total a tu dignidad durante todo el proceso.' },
+    { icon: '⚖️', title: 'Acompañamiento Legal Completo', desc: 'Nuestro equipo legal maneja todos los aspectos jurídicos del proceso en Colombia, protegiendo a todas las partes.' },
+  ]},
+  en: { title: 'Our Support', items: [
+    { icon: '👨‍👩‍👧', title: 'For Intended Parents', desc: 'We accompany you from the first consultation to birth. Clear information, transparent process, emotional support.' },
+    { icon: '🤰', title: 'For Carriers', desc: 'Legal protection, medical and psychological support, and total respect for your dignity throughout the process.' },
+    { icon: '⚖️', title: 'Complete Legal Support', desc: 'Our legal team handles all legal aspects of the process in Colombia, protecting all parties.' },
+  ]},
+  pt: { title: 'Nosso Acompanhamento', items: [
+    { icon: '👨‍👩‍👧', title: 'Para Pais Intencionais', desc: 'Acompanhamos você desde a primeira consulta até o nascimento.' },
+    { icon: '🤰', title: 'Para Gestantes', desc: 'Proteção legal, acompanhamento médico e psicológico durante todo o processo.' },
+    { icon: '⚖️', title: 'Acompanhamento Legal Completo', desc: 'Nossa equipe legal cuida de todos os aspectos jurídicos na Colômbia.' },
+  ]},
+  zh: { title: '我们的服务', items: [
+    { icon: '👨‍👩‍👧', title: '为准父母', desc: '从首次咨询到宝宝出生，我们全程陪伴。' },
+    { icon: '🤰', title: '为代孕妈妈', desc: '法律保护、医疗和心理支持，全程尊重您的尊严。' },
+    { icon: '⚖️', title: '全程法律服务', desc: '我们的法律团队处理所有法律事务，保护各方权益。' },
+  ]},
+  fr: { title: 'Notre Accompagnement', items: [
+    { icon: '👨‍👩‍👧', title: 'Pour les Parents', desc: 'De la première consultation jusqu\'à la naissance.' },
+    { icon: '🤰', title: 'Pour les Gestantes', desc: 'Protection juridique, accompagnement médical et psychologique.' },
+    { icon: '⚖️', title: 'Accompagnement Juridique', desc: 'Notre équipe gère tous les aspects légaux en Colombie.' },
+  ]},
+};
+
+const s = services[lang] ?? services.es;
+---
+
+<section id="services" class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">{s.title}</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {s.items.map((item) => (
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">{item.icon}</div>
+          <h3 class="text-xl font-semibold mb-3 text-[#2D2D2D]">{item.title}</h3>
+          <p class="text-gray-600 leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

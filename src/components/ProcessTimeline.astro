@@ -1,0 +1,61 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const process: Record<string, { title: string; steps: { num: string; title: string; desc: string }[] }> = {
+  es: { title: 'Cómo Funciona', steps: [
+    { num: '1', title: 'Consulta Inicial', desc: 'Conocemos tu historia y evaluamos tu caso de forma personalizada.' },
+    { num: '2', title: 'Evaluación', desc: 'Verificamos requisitos legales y médicos para el proceso en Colombia.' },
+    { num: '3', title: 'Acompañamiento', desc: 'Te guiamos durante todo el proceso con apoyo legal, médico y emocional.' },
+    { num: '4', title: 'Nacimiento', desc: 'Estamos contigo en el momento más importante. Todo listo para recibir a tu familia.' },
+  ]},
+  en: { title: 'How It Works', steps: [
+    { num: '1', title: 'Initial Consultation', desc: 'We learn your story and evaluate your case personally.' },
+    { num: '2', title: 'Evaluation', desc: 'We verify legal and medical requirements for the process in Colombia.' },
+    { num: '3', title: 'Accompaniment', desc: 'We guide you with legal, medical and emotional support.' },
+    { num: '4', title: 'Birth', desc: 'We are with you at the most important moment.' },
+  ]},
+  pt: { title: 'Como Funciona', steps: [
+    { num: '1', title: 'Consulta Inicial', desc: 'Conhecemos sua história e avaliamos seu caso.' },
+    { num: '2', title: 'Avaliação', desc: 'Verificamos requisitos legais e médicos.' },
+    { num: '3', title: 'Acompanhamento', desc: 'Apoio legal, médico e emocional durante todo o processo.' },
+    { num: '4', title: 'Nascimento', desc: 'Estamos com você no momento mais importante.' },
+  ]},
+  zh: { title: '流程介绍', steps: [
+    { num: '1', title: '初次咨询', desc: '了解您的故事，个性化评估。' },
+    { num: '2', title: '评估', desc: '核实法律和医疗要求。' },
+    { num: '3', title: '全程陪伴', desc: '法律、医疗和情感支持。' },
+    { num: '4', title: '宝宝出生', desc: '在最重要的时刻陪伴您。' },
+  ]},
+  fr: { title: 'Comment Ça Marche', steps: [
+    { num: '1', title: 'Consultation Initiale', desc: 'Nous découvrons votre histoire.' },
+    { num: '2', title: 'Évaluation', desc: 'Vérification des exigences légales et médicales.' },
+    { num: '3', title: 'Accompagnement', desc: 'Soutien juridique, médical et émotionnel.' },
+    { num: '4', title: 'Naissance', desc: 'Nous sommes avec vous au moment le plus important.' },
+  ]},
+};
+
+const p = process[lang] ?? process.es;
+---
+
+<section id="process" class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">{p.title}</h2>
+    <div class="relative">
+      {p.steps.map((step, i) => (
+        <div class="flex gap-6 mb-8 last:mb-0">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-[#4A7C6F] text-white flex items-center justify-center font-bold text-lg shrink-0">
+              {step.num}
+            </div>
+            {i < p.steps.length - 1 && <div class="w-0.5 flex-1 bg-[#4A7C6F]/20 mt-2" />}
+          </div>
+          <div class="pb-8">
+            <h3 class="text-xl font-semibold mb-2">{step.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const contact: Record<string, Record<string, string>> = {
+  es: { title: 'Contáctanos', name: 'Nombre', email: 'Email', country: 'País', message: 'Mensaje', gdpr: 'Acepto la política de privacidad', send: 'Enviar', sending: 'Enviando...', success: '¡Gracias! Te contactaremos en 24 horas.' },
+  en: { title: 'Contact Us', name: 'Name', email: 'Email', country: 'Country', message: 'Message', gdpr: 'I accept the privacy policy', send: 'Send', sending: 'Sending...', success: 'Thank you! We will contact you within 24 hours.' },
+  pt: { title: 'Fale Conosco', name: 'Nome', email: 'Email', country: 'País', message: 'Mensagem', gdpr: 'Aceito a política de privacidade', send: 'Enviar', sending: 'Enviando...', success: 'Obrigado! Entraremos em contato em 24 horas.' },
+  zh: { title: '联系我们', name: '姓名', email: '邮箱', country: '国家', message: '留言', gdpr: '我接受隐私政策', send: '发送', sending: '发送中...', success: '谢谢！我们将在24小时内与您联系。' },
+  fr: { title: 'Contactez-Nous', name: 'Nom', email: 'Email', country: 'Pays', message: 'Message', gdpr: 'J\'accepte la politique de confidentialité', send: 'Envoyer', sending: 'Envoi...', success: 'Merci ! Nous vous contacterons dans 24 heures.' },
+};
+
+const c = contact[lang] ?? contact.es;
+---
+
+<section id="contact" class="py-16 px-4">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">{c.title}</h2>
+    <form id="contact-form" class="space-y-6" data-lang={lang}>
+      <div>
+        <label for="name" class="block text-sm font-medium mb-1">{c.name} *</label>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="100"
+          class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#4A7C6F] focus:ring-1 focus:ring-[#4A7C6F] outline-none" />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium mb-1">{c.email} *</label>
+        <input type="email" id="email" name="email" required
+          class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#4A7C6F] focus:ring-1 focus:ring-[#4A7C6F] outline-none" />
+      </div>
+      <div>
+        <label for="country" class="block text-sm font-medium mb-1">{c.country} *</label>
+        <input type="text" id="country" name="country" required
+          class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#4A7C6F] focus:ring-1 focus:ring-[#4A7C6F] outline-none" />
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-medium mb-1">{c.message}</label>
+        <textarea id="message" name="message" rows="4" maxlength="2000"
+          class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#4A7C6F] focus:ring-1 focus:ring-[#4A7C6F] outline-none"></textarea>
+      </div>
+      <div class="flex items-start gap-2">
+        <input type="checkbox" id="gdpr" name="gdpr" required class="mt-1" />
+        <label for="gdpr" class="text-sm text-gray-600">{c.gdpr} *</label>
+      </div>
+      <!-- Honeypot -->
+      <div class="hidden" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <button type="submit" class="w-full bg-[#4A7C6F] text-white py-4 rounded-lg text-lg font-semibold hover:bg-[#3d6b5f] transition-colors">
+        <span class="btn-text">{c.send}</span>
+        <span class="btn-loading hidden">{c.sending}</span>
+      </button>
+      <div id="form-success" class="hidden text-center text-[#4A7C6F] font-semibold py-4 bg-green-50 rounded-lg">
+        {c.success}
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if ((form.querySelector('[name="website"]') as HTMLInputElement)?.value) return;
+
+    const btn = form.querySelector('.btn-text') as HTMLElement;
+    const loading = form.querySelector('.btn-loading') as HTMLElement;
+    btn?.classList.add('hidden');
+    loading?.classList.remove('hidden');
+
+    const data = {
+      name: (form.querySelector('[name="name"]') as HTMLInputElement).value.trim(),
+      email: (form.querySelector('[name="email"]') as HTMLInputElement).value.trim(),
+      country: (form.querySelector('[name="country"]') as HTMLInputElement).value.trim(),
+      message: (form.querySelector('[name="message"]') as HTMLTextAreaElement).value.trim(),
+      gdpr_consent: (form.querySelector('[name="gdpr"]') as HTMLInputElement).checked,
+      language: form.dataset.lang || 'es',
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success')?.classList.remove('hidden');
+      }
+    } catch {
+      btn?.classList.remove('hidden');
+      loading?.classList.add('hidden');
+    }
+  });
+</script>

@@ -1,0 +1,178 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const chatbot: Record<string, Record<string, string>> = {
+  es: { greeting: '¡Hola! 👋 Soy el asistente de Translatio. ¿En qué puedo ayudarte?', placeholder: 'Escribe tu pregunta...', faq1: '¿Qué es la subrogación?', faq2: '¿Es legal en Colombia?', faq3: 'Quiero información', escalate: 'Para darte la mejor información, me gustaría que un especialista te contacte. ¿Me compartes tu nombre y email?', thanks: '¡Gracias! Un especialista te contactará en 24 horas. 🤝', namePlaceholder: 'Tu nombre', emailPlaceholder: 'Tu email', send: 'Enviar' },
+  en: { greeting: 'Hello! 👋 I\'m Translatio\'s assistant. How can I help you?', placeholder: 'Type your question...', faq1: 'What is surrogacy?', faq2: 'Is it legal in Colombia?', faq3: 'I want information', escalate: 'To give you the best information, I\'d like a specialist to contact you. Can you share your name and email?', thanks: 'Thank you! A specialist will contact you within 24 hours. 🤝', namePlaceholder: 'Your name', emailPlaceholder: 'Your email', send: 'Send' },
+  pt: { greeting: 'Olá! 👋 Sou o assistente da Translatio. Como posso ajudar?', placeholder: 'Digite sua pergunta...', faq1: 'O que é substituição gestacional?', faq2: 'É legal na Colômbia?', faq3: 'Quero informações', escalate: 'Para dar a melhor informação, gostaria que um especialista entrasse em contato. Pode compartilhar seu nome e email?', thanks: 'Obrigado! Um especialista entrará em contato em 24 horas. 🤝', namePlaceholder: 'Seu nome', emailPlaceholder: 'Seu email', send: 'Enviar' },
+  zh: { greeting: '您好！👋 我是Translatio的助手。有什么可以帮助您的？', placeholder: '请输入您的问题...', faq1: '什么是代孕？', faq2: '哥伦比亚合法吗？', faq3: '我想了解信息', escalate: '为了给您最好的服务，请留下您的姓名和邮箱，我们的专家会联系您。', thanks: '谢谢！专家将在24小时内与您联系。🤝', namePlaceholder: '您的姓名', emailPlaceholder: '您的邮箱', send: '发送' },
+  fr: { greeting: 'Bonjour ! 👋 Je suis l\'assistant de Translatio. Comment puis-je vous aider ?', placeholder: 'Tapez votre question...', faq1: 'Qu\'est-ce que la GPA ?', faq2: 'Est-ce légal en Colombie ?', faq3: 'Je veux des informations', escalate: 'Pour vous donner la meilleure information, j\'aimerais qu\'un spécialiste vous contacte. Pouvez-vous partager votre nom et email ?', thanks: 'Merci ! Un spécialiste vous contactera dans 24 heures. 🤝', namePlaceholder: 'Votre nom', emailPlaceholder: 'Votre email', send: 'Envoyer' },
+};
+
+const cb = chatbot[lang] ?? chatbot.es;
+---
+
+<!-- Chatbot Widget -->
+<div id="chatbot" class="fixed bottom-6 right-6 z-50" data-lang={lang}>
+  <!-- Toggle Button -->
+  <button id="chatbot-toggle" class="w-14 h-14 bg-[#2C5F8A] text-white rounded-full shadow-lg flex items-center justify-center text-2xl hover:bg-[#1f4a6e] transition-colors relative" aria-label="Chat" aria-expanded="false">
+    <span id="chatbot-icon">💬</span>
+    <span id="chatbot-pulse" class="absolute inset-0 rounded-full bg-[#2C5F8A] animate-ping opacity-20"></span>
+  </button>
+
+  <!-- Chat Window -->
+  <div id="chatbot-window" class="hidden absolute bottom-20 right-0 w-[360px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col" style="height: 500px;">
+    <!-- Header -->
+    <div class="bg-[#2C5F8A] text-white px-4 py-3 flex justify-between items-center">
+      <span class="font-semibold">Translatio</span>
+      <button id="chatbot-close" class="text-white/80 hover:text-white text-lg" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chatbot-messages" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Bot greeting -->
+      <div class="flex gap-2">
+        <div class="w-8 h-8 rounded-full bg-[#2C5F8A] text-white flex items-center justify-center text-sm shrink-0">T</div>
+        <div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[80%]">
+          <p class="text-sm">{cb.greeting}</p>
+        </div>
+      </div>
+      <!-- Quick replies -->
+      <div id="quick-replies" class="flex flex-wrap gap-2 ml-10">
+        <button class="quick-reply bg-[#2C5F8A]/10 text-[#2C5F8A] px-3 py-1.5 rounded-full text-sm hover:bg-[#2C5F8A]/20 transition-colors" data-q="what_is">{cb.faq1}</button>
+        <button class="quick-reply bg-[#2C5F8A]/10 text-[#2C5F8A] px-3 py-1.5 rounded-full text-sm hover:bg-[#2C5F8A]/20 transition-colors" data-q="legal">{cb.faq2}</button>
+        <button class="quick-reply bg-[#2C5F8A]/10 text-[#2C5F8A] px-3 py-1.5 rounded-full text-sm hover:bg-[#2C5F8A]/20 transition-colors" data-q="info">{cb.faq3}</button>
+      </div>
+    </div>
+
+    <!-- Lead capture (hidden initially) -->
+    <div id="lead-form" class="hidden px-4 py-3 border-t bg-gray-50">
+      <p class="text-sm text-gray-600 mb-2">{cb.escalate}</p>
+      <input id="lead-name" type="text" placeholder={cb.namePlaceholder} class="w-full px-3 py-2 border rounded-lg text-sm mb-2 outline-none focus:border-[#2C5F8A]" />
+      <input id="lead-email" type="email" placeholder={cb.emailPlaceholder} class="w-full px-3 py-2 border rounded-lg text-sm mb-2 outline-none focus:border-[#2C5F8A]" />
+      <button id="lead-submit" class="w-full bg-[#2C5F8A] text-white py-2 rounded-lg text-sm hover:bg-[#1f4a6e]">{cb.send}</button>
+    </div>
+
+    <!-- Input -->
+    <div id="chat-input" class="px-4 py-3 border-t flex gap-2">
+      <input id="chatbot-input" type="text" placeholder={cb.placeholder} class="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:border-[#2C5F8A]" />
+      <button id="chatbot-send" class="bg-[#2C5F8A] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#1f4a6e]" aria-label={cb.send}>→</button>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="px-4 py-2 bg-gray-50 text-center">
+      <p class="text-[10px] text-gray-400">{lang === 'es' ? 'Esta información es general y no constituye asesoría médica ni legal.' : lang === 'zh' ? '此信息仅供参考，不构成医疗或法律建议。' : 'This information is general and does not constitute medical or legal advice.'}</p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ lang, cb }}>
+  const toggle = document.getElementById('chatbot-toggle');
+  const window_ = document.getElementById('chatbot-window');
+  const close = document.getElementById('chatbot-close');
+  const input = document.getElementById('chatbot-input');
+  const sendBtn = document.getElementById('chatbot-send');
+  const messages = document.getElementById('chatbot-messages');
+  const quickReplies = document.getElementById('quick-replies');
+  const leadForm = document.getElementById('lead-form');
+  const chatInput = document.getElementById('chat-input');
+  let sessionId = crypto.randomUUID();
+  let escalateCount = 0;
+
+  function addMessage(text, isUser = false) {
+    const div = document.createElement('div');
+    div.className = isUser ? 'flex gap-2 justify-end' : 'flex gap-2';
+    div.innerHTML = isUser
+      ? `<div class="bg-[#2C5F8A] text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]"><p class="text-sm">${text}</p></div>`
+      : `<div class="w-8 h-8 rounded-full bg-[#2C5F8A] text-white flex items-center justify-center text-sm shrink-0">T</div><div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[80%]"><p class="text-sm">${text}</p></div>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showLeadForm() {
+    leadForm.classList.remove('hidden');
+    chatInput.classList.add('hidden');
+  }
+
+  async function sendChat(message) {
+    addMessage(message, true);
+    quickReplies?.classList.add('hidden');
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, language: lang, message }),
+      });
+      const data = await res.json();
+
+      if (data.escalate || data.type === 'escalate') {
+        addMessage(cb.escalate);
+        showLeadForm();
+      } else {
+        addMessage(data.answer || data.message || cb.escalate);
+        if (data.escalate) {
+          setTimeout(() => showLeadForm(), 1000);
+        }
+      }
+    } catch {
+      addMessage(cb.escalate);
+      showLeadForm();
+    }
+  }
+
+  // Toggle
+  toggle?.addEventListener('click', () => {
+    const open = !window_.classList.contains('hidden');
+    window_.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', !open);
+    document.getElementById('chatbot-pulse')?.classList.add('hidden');
+  });
+
+  close?.addEventListener('click', () => {
+    window_.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // Send
+  sendBtn?.addEventListener('click', () => {
+    const msg = input.value.trim();
+    if (msg) { sendChat(msg); input.value = ''; }
+  });
+
+  input?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const msg = input.value.trim();
+      if (msg) { sendChat(msg); input.value = ''; }
+    }
+  });
+
+  // Quick replies
+  document.querySelectorAll('.quick-reply').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.dataset.q;
+      const msg = btn.textContent;
+      sendChat(msg);
+    });
+  });
+
+  // Lead submit
+  document.getElementById('lead-submit')?.addEventListener('click', async () => {
+    const name = document.getElementById('lead-name').value.trim();
+    const email = document.getElementById('lead-email').value.trim();
+    if (!name || !email) return;
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, language: lang, source: 'chatbot', gdpr_consent: true }),
+      });
+    } catch {}
+
+    leadForm.classList.add('hidden');
+    chatInput.classList.remove('hidden');
+    addMessage(cb.thanks.replace('{name}', name));
+  });
+</script>

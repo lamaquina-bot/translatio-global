@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import ChatbotWidget from '../../components/ChatbotWidget.astro';
+import Footer from '../../components/Footer.astro';
+const lang = 'pt';
+---
+<BaseLayout title="Início" lang={lang}>
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <Hero lang={lang} />
+    <ServiceCards lang={lang} />
+    <ProcessTimeline lang={lang} />
+    <section class="py-16 px-4 bg-[#4A7C6F] text-white">
+      <div class="max-w-4xl mx-auto grid grid-cols-3 gap-8 text-center">
+        <div><div class="text-3xl md:text-4xl font-bold mb-2">+500</div><div class="text-white/80">Famílias</div></div>
+        <div><div class="text-3xl md:text-4xl font-bold mb-2">15+</div><div class="text-white/80">Anos</div></div>
+        <div><div class="text-3xl md:text-4xl font-bold mb-2">5</div><div class="text-white/80">Idiomas</div></div>
+      </div>
+    </section>
+    <ContactForm lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <ChatbotWidget lang={lang} />
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+
+const footer = {
+  es: { privacy: 'Política de Privacidad', legal: 'Aviso Legal', rights: 'Todos los derechos reservados' },
+  en: { privacy: 'Privacy Policy', legal: 'Legal Notice', rights: 'All rights reserved' },
+  pt: { privacy: 'Política de Privacidade', legal: 'Aviso Legal', rights: 'Todos os direitos reservados' },
+  zh: { privacy: '隐私政策', legal: '法律声明', rights: '版权所有' },
+  fr: { privacy: 'Politique de Confidentialité', legal: 'Mentions Légales', rights: 'Tous droits réservés' },
+}[lang] ?? { privacy: 'Privacy Policy', legal: 'Legal Notice', rights: 'All rights reserved' };
+---
+
+<footer class="bg-[#2D2D2D] text-white/80 py-12 mt-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <span class="text-xl font-bold text-[#D4A574]" style="font-family: 'Playfair Display', serif;">Translatio Global</span>
+        <p class="text-sm mt-1 text-white/60">Colombia 🇨🇴</p>
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a href="#" class="hover:text-white transition-colors">{footer.privacy}</a>
+        <a href="#" class="hover:text-white transition-colors">{footer.legal}</a>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-8 pt-6 text-center text-xs text-white/40">
+      © {year} Translatio Global. {footer.rights}.
+    </div>
+  </div>
+</footer>

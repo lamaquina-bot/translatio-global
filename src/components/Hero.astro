@@ -1,0 +1,33 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const t: Record<string, Record<string, string>> = {
+  es: { title: 'Subrogación Gestacional con Confianza Global', subtitle: 'Acompañamos a padres y gestantes en cada paso del camino. Colombia como destino seguro y regulado.', cta: 'Solicitar Consulta Gratuita', cta2: 'Conocer Más' },
+  en: { title: 'Gestational Surrogacy with Global Confidence', subtitle: 'We accompany parents and carriers every step of the way. Colombia as a safe and regulated destination.', cta: 'Request Free Consultation', cta2: 'Learn More' },
+  pt: { title: 'Substituição Gestacional com Confiança Global', subtitle: 'Acompanhamos pais e gestantes em cada passo. Colômbia como destino seguro e regulamentado.', cta: 'Solicitar Consulta Gratuita', cta2: 'Saiba Mais' },
+  zh: { title: '值得信赖的全球代孕服务', subtitle: '我们陪伴父母和代孕妈妈走过每一步。哥伦比亚作为安全且有法律保障的目的地。', cta: '免费咨询', cta2: '了解更多' },
+  fr: { title: 'Gestation pour Autrui avec Confiance Mondiale', subtitle: 'Nous accompagnons parents et gestantes à chaque étape. Colombie comme destination sûre.', cta: 'Consultation Gratuite', cta2: 'En Savoir Plus' },
+};
+
+const c = t[lang] ?? t.es;
+---
+
+<section class="pt-28 pb-16 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#2D2D2D] leading-tight mb-6">
+      {c.title}
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+      {c.subtitle}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#contact" class="bg-[#4A7C6F] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#3d6b5f] transition-colors shadow-md">
+        {c.cta}
+      </a>
+      <a href="#services" class="border-2 border-[#4A7C6F] text-[#4A7C6F] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#4A7C6F] hover:text-white transition-colors">
+        {c.cta2}
+      </a>
+    </div>
+  </div>
+</section>
