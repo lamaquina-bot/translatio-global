@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATA_DIR=/app/data
+      # - SMTP_HOST=
+      # - SMTP_PORT=
+      # - SMTP_USER=
+      # - SMTP_PASS=
+      # - NOTIFY_EMAIL=
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
